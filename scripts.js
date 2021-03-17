@@ -19,7 +19,7 @@ const Modal = {
 } 
 
 
-const Storange = {
+const Storage = {
     get() {
         return JSON.parse(localStorage.getItem("dev.finances:transactions")) || []
     },
@@ -30,33 +30,8 @@ const Storange = {
 }
 
 const Transaction = {
-    all:   [ 
-        {
-    
-            description: 'luz',
-            amount: -50000,
-            date: '09/03/2021',
-    
-        },
-        {
-            
-            description: 'Website',
-            amount: 500000,
-            date: '09/03/2021',
-        }, 
-        {
-            
-            description: 'Internet',
-            amount: -20000,
-            date: '09/03/2021',
-        },
-        {
-             
-            description: 'App',
-            amount: 200000,
-            date: '09/03/2021',
-        },
-    ],
+    all:  Storage.get(),
+
     add(transaction){
         Transaction.all.push(transaction)
 
@@ -221,7 +196,7 @@ const Form = {
     clearFields() {
         Form.description.value = ""
         Form.amount.value = ""
-        Form.dete.value = ""
+        Form.date.value = ""
     },
 
    submit(event) {
@@ -240,13 +215,10 @@ const Form = {
        } catch (error) {
            alert(error.message)
        }
-
-           
+       
    }  
 
 }
-
-
 const App = {
     init() {
 
